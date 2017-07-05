@@ -1,0 +1,116 @@
+﻿@model SalaoBeleza.Models.Email
+
+@{
+    ViewBag.Title = "Contato";
+}
+
+<!-- === BEGIN CONTENT === -->
+<div class="primary-container">
+    <div class="container no-padding">
+        <div class="row margin-vert-30">
+            <!-- Main Column -->
+            <div class="col-md-9">
+                <!-- Main Content -->
+                <div class="headline">
+                    <h2>Contato</h2>
+                </div>
+                <p>
+                    Envie-nos suas dúvidas, críticas ou sugestões.
+                </p>
+                <br>
+                <!-- Contact Form -->
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { encType = "multipart/form-data", id = "myform", name = "myform" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <form>
+                        <label>Nome</label>
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-6 col-md-offset-0">
+                                @Html.TextBoxFor(m => m.FromName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <label>
+                            Email
+                            <span class="color-red">*</span>
+                        </label>
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-6 col-md-offset-0">
+                                @Html.TextBoxFor(m => m.FromEmail, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <label>Mensagem</label>
+                        <div class="row margin-bottom-20">
+                            <div class="col-md-8 col-md-offset-0">
+                                @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @rows = 8 })
+                            </div>
+                        </div>
+                        <p>
+                            <button type="submit" id="sendMail" class="btn btn-primary">Enviar</button>
+                        </p>
+                    </form>
+                }
+
+                <div id="divProcessing" style="visibility:hidden">
+                    <div style="background:white; text-align:center">
+                        <p>
+                            Enviando Email... <br />
+                            Por favor, aguarde....<br />
+                            <br />
+                            <img src="~/Content/LandingPage/assets/img/loader.gif">
+                        </p>
+                    </div>
+                </div>
+                <!-- End Contact Form -->
+                <!-- End Main Content -->
+            </div>
+            <!-- End Main Column -->
+            <!-- Side Column -->
+            <div class="col-md-3">
+                <!-- Recent Posts -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informações de Contato</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet, no cetero voluptatum est, audire sensibus maiestatis vis et. Vitae audire prodesset an his. Nulla ubique omnesque in sit.</p>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="fa-phone color-primary"></i>+353-44-55-66
+                            </li>
+                            <li>
+                                <i class="fa-envelope color-primary"></i>info@example.com
+                            </li>
+                            <li>
+                                <i class="fa-home color-primary"></i>http://www.example.com
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>
+                                <strong class="color-primary">Monday-Friday:</strong>9am to 6pm
+                            </li>
+                            <li>
+                                <strong class="color-primary">Saturday:</strong>10am to 3pm
+                            </li>
+                            <li>
+                                <strong class="color-primary">Sunday:</strong>Closed
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End recent Posts -->
+                <!-- About -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Sobre</h3>
+                    </div>
+                    <div class="panel-body">
+                        Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.
+                    </div>
+                </div>
+                <!-- End About -->
+            </div>
+            <!-- End Side Column -->
+        </div>
+        <!-- === END CONTENT === -->
+    </div>
+</div>
